@@ -1,11 +1,8 @@
-source("scripts/tidymodels.R")
-source("scripts/custom_functions.R")
-
 ## Dalex package
 explainer_xgboost <- DALEX::explain(
-  model = custom_model_expl(reg_res),
-  data = custom_data_expl(reg_res, pid_train, "diabetes"),
-  y = custom_y_expl(reg_res, pid_train, "diabetes"),
+  model = custom_model_expl(reg_res_xgboost),
+  data = custom_data_expl(reg_res_xgboost, pid_train, "diabetes"),
+  y = custom_y_expl(reg_res_xgboost, pid_train, "diabetes"),
   predict_function = custom_predict,
   label = "xgboost")
 
@@ -20,7 +17,7 @@ vip_xgboost <- DALEX::variable_importance(explainer_xgboost, loss_function = DAL
 plot(vip_xgboost, max_vars = 10)
 
 ## Break-down Plots for Additive Attributions
-new_observation <- custom_new_obs(reg_res, pid_train, "diabetes", 1)
+new_observation <- custom_new_obs(reg_res_xgboost, pid_train, "diabetes", 1)
 
 ## Break-down Plots for Interactions
 bd_xgboost <- breakDown::break_down(explainer_xgboost, new_observation, keep_distributions = TRUE)
