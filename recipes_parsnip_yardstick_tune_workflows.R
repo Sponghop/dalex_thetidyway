@@ -104,9 +104,8 @@ plot(local_model_xgboost)
 
 ## Ceteris Paribus Explainer
 cp_pp_xgboost <- DALEX::predict_profile(explainer_xgboost, new_observation)
-cp_pp_xgboost
-plot(cp_pp_xgboost$glucose)
+plot(cp_pp_xgboost, variables = c("age", "glucose"))
 
 ## Dashboard overzicht
-
+modelStudio::modelStudio(explainer_xgboost)
 
