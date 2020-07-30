@@ -22,6 +22,8 @@ res <-
   ml_wflow %>%
   tune_grid(resamples = folds, control = ctrl, grid = grid)
 
+stopCluster(cl)
+
 res %>%
   tune::collect_metrics()
 
