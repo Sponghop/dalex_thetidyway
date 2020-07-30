@@ -62,7 +62,6 @@ gridExtra::grid.arrange(p1_shap, p2_shap, p3_shap, nrow = 1)
 local_model_decisiontree <- localModel::individual_surrogate_model(explainer_decisiontree, new_observation, size = 1000, seed = 1313)
 local_model_randomforest <- localModel::individual_surrogate_model(explainer_randomforest, new_observation, size = 1000, seed = 1313)
 local_model_xgboost <- localModel::individual_surrogate_model(explainer_xgboost, new_observation, size = 1000, seed = 1313)
-
 plot(local_model_decisiontree, local_model_randomforest, local_model_xgboost)
 
 ## Ceteris Paribus Explainer
